@@ -27,8 +27,15 @@ export async function POST(req: NextRequest) {
   // Chat GPT Query
   const response = await query(prompt, model);
 
+  let text;
+  if (typeof response !== 'string') {
+    text = response.content;
+  } else {
+    text = response;
+  }
+
   const message: Message = {
-    text: response as string || 'ChatGPT was unable to find an answer for that!',
+    text: text || 'ChatGPT was unable to find an answer for that!',
     createdAt: admin.firestore.Timestamp.now(),
     user: {
       _id: 'ChatGPT',
