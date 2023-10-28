@@ -5,6 +5,7 @@ import { useSession } from 'next-auth/react';
 import { useCollection } from 'react-firebase-hooks/firestore';
 import Message from './Message';
 import { ArrowDownCircleIcon } from '@heroicons/react/24/outline';
+import { useEffect, useLayoutEffect, useRef } from 'react';
 
 type ChatProps = {
   chatId: string;
@@ -27,6 +28,15 @@ function Chat({ chatId }: ChatProps) {
       )
   );
 
+  const messagesEndRef = useRef<null | HTMLDivElement>(null);
+
+  useLayoutEffect(() => {
+    messagesEndRef.current?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'end',
+    });
+  }, [messages]);
+
   return (
     <div className="flex-1 overflow-y-auto overflow-x-hidden">
       {messages?.empty && (
@@ -41,6 +51,7 @@ function Chat({ chatId }: ChatProps) {
       {messages?.docs.map((message) => (
         <Message key={message.id} message={message.data()} />
       ))}
+      <div ref={messagesEndRef} />
     </div>
   );
 }

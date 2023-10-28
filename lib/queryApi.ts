@@ -13,7 +13,6 @@ const query = async (prompt: string, model: string) => {
     });
     return chatCompletion.choices[0].message;
   } catch (err) {
-    console.log(prompt, model, err);
     return `ChatGPT was unable to find an answer for that! (Error: ${
       (err as Error).message
     })`;
