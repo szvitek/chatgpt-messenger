@@ -52,5 +52,5 @@ export async function POST(req: NextRequest) {
     .collection('messages')
     .add(message);
 
-  return NextResponse.json({ answer: message.text });
+  return NextResponse.json<Data>({ answer: message.text });
 }
