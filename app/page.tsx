@@ -16,7 +16,7 @@ export default function HomePage() {
       <h1 className="text-5xl font-bold mb-20">ChatGPT</h1>
 
       <div className="flex space-x-2 text-center">
-        <div>
+        <div className="flex-1">
           <div className="flex flex-col items-center justify-center mb-5">
             <SunIcon className="h-8 w-8" />
             <h2>Examples</h2>
@@ -31,7 +31,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div>
+        <div className="flex-1">
           <div className="flex flex-col items-center justify-center mb-5">
             <BoltIcon className="h-8 w-8" />
             <h2>Capabilities</h2>
@@ -48,7 +48,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div>
+        <div className="flex-1">
           <div className="flex flex-col items-center justify-center mb-5">
             <ExclamationTriangleIcon className="h-8 w-8" />
             <h2>Limitations</h2>
@@ -63,6 +63,15 @@ export default function HomePage() {
             </p>
             <p className="infoText">
               Limited knowledge of world and events after 2021
+            </p>
+            <p className="infoText">
+              Requests may timeout and you wont get an anskwer but the toast
+              will say "ChatGPT has responded". It's because of the free web
+              hosting...:
+            </p>
+            <p className="infoText">
+              While all the models are requested from openai but you won't be
+              selecrt any other then 'gpt-3.5-turbo'
             </p>
           </div>
         </div>
